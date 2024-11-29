@@ -1,18 +1,13 @@
 package bookcenter.mappers;
 
 import bookcenter.dtos.UsuarioDTO;
-import bookcenter.modelo.Usuarios;
+import bookcenter.modelo.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = CredencialesMapper.class)
-public interface UsuarioMapper extends MapperGenerico<UsuarioDTO, Usuarios> {
+@Mapper(componentModel = "spring")
+public interface UsuarioMapper extends MapperGenerico<UsuarioDTO, Usuario> {
 
-    @Override
-    @Mapping(source = "credencial", target = "credencial")
-    UsuarioDTO toDTO(Usuarios usuario);
-
-    @Override
-    @Mapping(source = "credencial", target = "credencial")
-    Usuarios toEntity(UsuarioDTO dto);
+    @Mapping(target = "clave", ignore = true)
+    Usuario toEntityFromCADTO(UsuarioDTO.UsuarioCrearDto usuarioCrearDto);
 }

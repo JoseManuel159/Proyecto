@@ -1,22 +1,18 @@
 package bookcenter.controlador;
 
-import bookcenter.dtos.ClienteDTO;
 import bookcenter.mappers.ClienteMapper;
 import bookcenter.modelo.Cliente;
-import bookcenter.modelo.Credenciales;
-import bookcenter.modelo.Pedido;
 import bookcenter.servicio.ClienteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RestController
 @RequestMapping("/clientes")
 @RequiredArgsConstructor
@@ -59,6 +55,4 @@ public class ClientesController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
 }

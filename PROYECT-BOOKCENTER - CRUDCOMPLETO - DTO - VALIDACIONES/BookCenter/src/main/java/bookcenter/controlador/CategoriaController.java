@@ -28,7 +28,6 @@ public class CategoriaController {
         return ResponseEntity.ok(objCategoria);
     }
 
-
     @PostMapping("/guardar")
     public ResponseEntity<Categoria> guardar(@RequestBody Categoria objCategoria) {
         Categoria nuevoCategoria = varCategoriaService.save(objCategoria);
@@ -39,8 +38,6 @@ public class CategoriaController {
     public void eliminar(@PathVariable Long id) {
         varCategoriaService.delete(id);
     }
-
-
     @PutMapping("/editar/{id}")
     public ResponseEntity<Categoria> editar(@RequestBody Categoria objCategoria, @PathVariable Long id) {
         Categoria categoriaActualizado = varCategoriaService.update(id, objCategoria);

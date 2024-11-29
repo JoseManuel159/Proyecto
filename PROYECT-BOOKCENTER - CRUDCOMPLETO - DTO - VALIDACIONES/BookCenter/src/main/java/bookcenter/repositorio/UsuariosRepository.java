@@ -1,6 +1,10 @@
 package bookcenter.repositorio;
 
-import bookcenter.modelo.Usuarios;
+import bookcenter.modelo.Usuario;
 
-public interface UsuariosRepository extends CrudGenericoRepository<Usuarios,Long> {
+import java.util.Optional;
+
+public interface UsuariosRepository extends CrudGenericoRepository<Usuario,Long> {
+    Optional<Usuario> findOneByUser(String user);
+
 }

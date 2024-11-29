@@ -1,9 +1,7 @@
 package bookcenter.servicio.implementacion;
 
 import bookcenter.modelo.Cliente;
-import bookcenter.modelo.Credenciales;
 import bookcenter.repositorio.ClienteRepository;
-import bookcenter.repositorio.CredencialesRepository;
 import bookcenter.repositorio.CrudGenericoRepository;
 import bookcenter.servicio.ClienteService;
 import lombok.RequiredArgsConstructor;

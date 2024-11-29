@@ -31,13 +31,19 @@ public class ProductoController {
     }
 
     @PostMapping("/guardar")
-    public ResponseEntity<String> guardar(@Valid @RequestBody Producto objProducto, BindingResult result) {
-        if(result.hasErrors()) {
-            return new ResponseEntity<>(result.getFieldError().getDefaultMessage(),HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Producto> guardar(@Valid @RequestBody Producto objProducto, BindingResult result) {
+        if (result.hasErrors()) {
+            // Devuelve el mensaje de error si hay errores de validación
+            return ResponseEntity.badRequest().body(null);
         }
-        varProductoService.save(objProducto);
-        return new ResponseEntity<>("CREADO",HttpStatus.OK);
+
+        // Guarda el producto y devuelve el objeto creado
+        Producto productoGuardado = varProductoService.save(objProducto);
+
+        // Devuelve el producto guardado con un estado 201 Created
+        return ResponseEntity.status(HttpStatus.CREATED).body(productoGuardado);
     }
+
 
     @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id) {
@@ -46,6 +52,9 @@ public class ProductoController {
 
     @PutMapping("/editar/{id}")
     public ResponseEntity<Producto> editar(@RequestBody Producto objProducto, @PathVariable Long id) {
+        System.out.println("Producto recibido: " + objProducto);
+        System.out.println("ID recibido: " + id);
+
         varProductoService.editarProducto(objProducto, id);
         return ResponseEntity.ok(objProducto);
     }

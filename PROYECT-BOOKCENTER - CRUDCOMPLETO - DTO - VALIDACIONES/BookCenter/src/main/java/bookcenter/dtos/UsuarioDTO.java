@@ -3,17 +3,20 @@ package bookcenter.dtos;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+
 @Data
 public class UsuarioDTO {
+    private Long idUsuario;
     @NotNull
-    private String nombres;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
+    private String user;
     @NotNull
-    private String dni;
-    private String cargo;
-    private String fotoUsuaria;
-    private String direccion;
-    private String permisos;
-    private CredencialesDTO credencial;
+    private String estado;
+    private String token;
+    private String rol; // Nuevo campo para el rol
+
+    public record CredencialesDto(String user, char[] clave) { }
+
+    public record UsuarioCrearDto(String user, char[] clave, String rol, String estado) { }
+
+
 }

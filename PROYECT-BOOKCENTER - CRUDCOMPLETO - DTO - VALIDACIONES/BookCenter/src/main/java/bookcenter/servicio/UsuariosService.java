@@ -1,10 +1,12 @@
 package bookcenter.servicio;
 
-import bookcenter.modelo.Usuarios;
+import bookcenter.dtos.UsuarioDTO;
+import bookcenter.modelo.Usuario;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 
-public interface UsuariosService extends CrudGenericoService<Usuarios,Long> {
-    public void editarUsuarios(Usuarios usuario, Long id);
+public interface UsuariosService extends CrudGenericoService<Usuario,Long> {
+    public void editarUsuarios(Usuario usuario, Long id);
+    public UsuarioDTO login(UsuarioDTO.CredencialesDto credentialsDto);
+    public UsuarioDTO register(UsuarioDTO.UsuarioCrearDto userDto);
+
 }
